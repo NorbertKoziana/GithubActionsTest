@@ -14,6 +14,11 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  contents: read
+  actions: read
+  checks: write
+
 jobs:
   build:
 
@@ -37,5 +42,5 @@ jobs:
       if: success() || failure()    # run this step even if previous step failed
       with:
         name: Backend Tests            # Name of the check run which will be created
-        path: target/surefire-reports/TEST-*.xml    # Path to test results
+        path: backend/target/surefire-reports/TEST-*.xml    # Path to test results
         reporter: java-junit        # Format of test results
